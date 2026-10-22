@@ -1,0 +1,16 @@
+# AWS credentials
+aws_credentials.cfg
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local scraped data
+data/raw/
+
+# VS Code local settings
+.vscode/
