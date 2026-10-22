@@ -10,7 +10,8 @@ from bs4 import BeautifulSoup
 import json
 from pathlib import Path
 from datetime import datetime, timezone
-from providers.untappd import resolve_menu_url
+from ingestion.providers.untappd import resolve_menu_url
+from ingestion.write_to_s3 import upload_to_s3
 
 def fetch_url(url):
     if not url.startswith(("http://", "https://")):
@@ -104,6 +105,9 @@ def main():
         json.dump(beers, f, indent=2, ensure_ascii=False)
 
     print(f"Saved {len(beers)} menu items to {output_path}")
+
+    # Upload to S3
+    upload_to_s3(restaurant_id)
 
 if __name__ == "__main__":
     main()
